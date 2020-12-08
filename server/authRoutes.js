@@ -6,7 +6,6 @@ const querystring = require("querystring");
 const axios = require('axios');
 const { response, query } = require("express");
 
-console.log(process.env)
 const CLIENT_ID = process.env.REACT_APP_CLIENT_ID
 const CLIENT_SECRET = process.env.REACT_APP_CLIENT_SECRET
 const REDIRECTURL = process.env.REACT_APP_REDIRECTURL
