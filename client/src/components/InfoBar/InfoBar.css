@@ -2,8 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #2979ff;
-  border-radius: 4px 4px 0 0;
+  background: #1db954;
   height: 60px;
   width: 100%;
 }
@@ -25,4 +24,11 @@
 
 .onlineIcon {
   margin-right: 5%;
+}
+
+#users {
+  display: flex;
+  /* justify-content: end; */
+  /* align-items: center; */
+  flex: 0.4;
 }

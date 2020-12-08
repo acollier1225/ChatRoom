@@ -1,0 +1,27 @@
+#searchResults li {
+  background-color: white;
+  color: black;
+  border-bottom: 1px solid black;
+  /* width: 100%; */
+  text-align: left;
+}
+
+#searchResults {
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  width: 50%;
+}
+
+.artist {
+  width: 80%;
+}
+
+.addSearch {
+  float: right;
+  width: 10%;
+}
+
+.addSearch:hover {
+  cursor: pointer;
+}

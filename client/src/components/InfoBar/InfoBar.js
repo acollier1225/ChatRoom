@@ -3,12 +3,15 @@ import closeIcon from '../../icons/closeIcon.png'
 import onlineIcon from '../../icons/onlineIcon.png'
 import './InfoBar.css';
 
-const InfoBar = ({ room }) => (
+const InfoBar = ({ room, users }) => (
     <div className="infoBar">
         <div className="leftInnerContainer">
             <img className="onlineIcon" src={onlineIcon} alt="online image" />
             <h3>{room}</h3>
+            
+            
         </div>
+        <div id="users"><h3>users: {users}</h3></div>
         <div className="rightInnerContainer">
             <a href="/">
                 <img src={closeIcon} alt="close image" />

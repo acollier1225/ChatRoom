@@ -1,0 +1,17 @@
+.listening button {
+  display: inline-block;
+  justify-content: center;
+  width: 30%;
+  background-color: #1db954;
+  color: white;
+  border-radius: 30px;
+  border-style: none;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.listening button:hover {
+  cursor: pointer;
+}

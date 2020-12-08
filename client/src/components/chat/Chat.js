@@ -5,32 +5,59 @@ import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
 import Messages from '../Messages/Messages';
 import './Chat.css';
+import Users from './Users';
 
 let socket;
 
 const Chat = ({ location }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
+    const [users, setUsers] = useState([]);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
+    // const [topArtists, setArtists] = useState([]);
     const ENDPOINT = 'localhost:5000';
+    const topArtists = []
 
     useEffect(() => {
-        const { name, room } = queryString.parse(location.search);
+        const { name, room, topartists, searchedartists } = queryString.parse(location.search);
+        if (topartists) {let temp = topartists.split(",")
+        temp.map(item => {
+            topArtists.push(item)
+        })}
 
+        if (searchedartists) {let temp = topartists.split(",")
+        temp.map(item => {
+            topArtists.push(item)
+        })}
+        
         socket = io(ENDPOINT)
+        
 
         setName(name);
         setRoom(room);
 
-        socket.emit('join', { name, room }, () => {
+        socket.emit('join', { name, room, topArtists }, () => {
+            // console.log('hello', name)
+            // setUsers([...users, name])
             
         });
+        
+        socket.on('update', (data) => {
+            console.log(data)
+            // setMessages([...messages])
+            let middleArr = [];
+            data.map(item => {
+                middleArr.push(item.name)
+            })
+            setUsers([middleArr.join(", ")])
+            middleArr = [];
+        })
 
         return () => {
-            socket.emit('disconnect');
+            socket.emit('disconnection');
 
-            socket.off();
+            socket.close();
         }
     }, [ENDPOINT, location.search]);
 
@@ -38,22 +65,25 @@ const Chat = ({ location }) => {
         socket.on('message', (message) => {
             setMessages([...messages, message]);
         })
-    }, [messages])
+        console.log(messages)
+    }, [messages, users])
+
+    
 
     const sendMessage = (event) => {
         event.preventDefault();
+        console.log(messages)
 
         if(message) {
             socket.emit('sendMessage', message, () => setMessage(''))
         }
     }
 
-    console.log(message, messages);
-
     return ( 
         <div className="outerContainer">
             <div className="container">
-                <InfoBar room={room} />
+                {/* <Users users={users} /> */}
+                <InfoBar room={room} users={users.join(" ")} />
                 <Messages messages={messages} name={name} />
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
             </div>

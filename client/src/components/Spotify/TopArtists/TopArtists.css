@@ -1,0 +1,26 @@
+#topArtists {
+  list-style: none;
+  max-width: 100%;
+  justify-content: space-between;
+  padding: 0px;
+}
+
+#topArtists li {
+  color: white;
+  margin: 10px;
+  padding: 10px;
+  display: inline-block;
+}
+
+#topArtists li img {
+  margin-top: 15px;
+}
+
+.delete {
+  float: right;
+  margin-left: 10px;
+}
+
+.delete:hover {
+  cursor: pointer;
+}
