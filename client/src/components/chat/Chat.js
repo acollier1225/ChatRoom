@@ -16,7 +16,7 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
     // const [topArtists, setArtists] = useState([]);
-    const ENDPOINT = 'localhost:5000';
+    const ENDPOINT = 'https://react-spotify-chat-application.herokuapp.com/';
     const topArtists = []
 
     useEffect(() => {
@@ -38,14 +38,13 @@ const Chat = ({ location }) => {
         setRoom(room);
 
         socket.emit('join', { name, room, topArtists }, () => {
-            // console.log('hello', name)
-            // setUsers([...users, name])
+            
             
         });
         
         socket.on('update', (data) => {
             console.log(data)
-            // setMessages([...messages])
+            
             let middleArr = [];
             data.map(item => {
                 middleArr.push(item.name)
@@ -82,7 +81,7 @@ const Chat = ({ location }) => {
     return ( 
         <div className="outerContainer">
             <div className="container">
-                {/* <Users users={users} /> */}
+                
                 <InfoBar room={room} users={users.join(" ")} />
                 <Messages messages={messages} name={name} />
                 <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />

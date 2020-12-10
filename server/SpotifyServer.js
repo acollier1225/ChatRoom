@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const PORT = process.env.PORT || 5001;
+const PORT = 5001;
 require("dotenv").config();
 
 const router = require('./spotifyRouter');
@@ -17,3 +17,5 @@ app.use(AuthRoutes);
 app.listen(PORT, () => {
   console.log(`Server has started on ${PORT}`);
 })
+
+module.exports = router;
