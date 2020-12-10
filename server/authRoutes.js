@@ -39,7 +39,7 @@ router.get('/callback', async (req, res) => {
             password: CLIENT_SECRET
           }
         }).then(function(response) {
-            res.redirect('http://localhost:3000/spotify/' + 
+            res.redirect('https://spotify-chat.netlify.app/spotify/' + 
             querystring.stringify({
                 '#': '#',
                 access_token: response.data.access_token,
