@@ -51,10 +51,11 @@ const CreateRoom = (props) => {
     const check = () => {
         if (type === 'Searched Artists' && chosenArtists.length === 0) {
             setWarning('You have no selected artists!')
-            // return <div>You have no selected artists!</div>
+            
         } else if (type === 'Top Artists' && artists.length === 0) {
             setWarning('You have no top artists!')
-            // return <div>You have no top artists!</div>
+            
+
         } else if (type === 'Same Song' && !props.song) {
             setWarning('You are not currently playing a song!')
         } else {
